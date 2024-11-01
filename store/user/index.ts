@@ -5,6 +5,7 @@ export interface User {
   id?: string;
   email?: string;
   comment?: string;
+  token?: string;
 }
 
 export interface UserState {
