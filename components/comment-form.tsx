@@ -6,15 +6,7 @@ import { useDispatch } from "react-redux";
 import TextMarkdown from "./text-markdown";
 import { Button } from "./ui/button";
 import { setUserComment } from "@/store/user";
-import {
-  Menubar,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarSeparator,
-  MenubarShortcut,
-  MenubarTrigger,
-} from "@/components/ui/menubar"
+import Drawer from "@/components/drawer"
 
 
 export default function CommentForm() {
@@ -33,30 +25,15 @@ export default function CommentForm() {
 
   return (
     <>
-      <div>
-        <h1>Queremos que dejes tus palabras para los papás de Dylan</h1>
-      </div>
-      <div>
+      <div className="mb-4">
+        <h2 className="font-bold text-xl text-center">Hola!</h2>
+        <p className="text-center">Sabemos que sos muy especial para Jose y Merly, por eso queremos que dejes tus palabras para los papás de Dylan</p>
+      
         <TextMarkdown onChange={handleChange} />
+      
         <Button className="w-full mt-6" onClick={handleSubmit}>Listo</Button>
-      </div>
-
-      <div>
-        {/* <Menubar>
-          <MenubarMenu>
-            <MenubarTrigger>File</MenubarTrigger>
-            <MenubarContent>
-              <MenubarItem>
-                New Tab <MenubarShortcut>⌘T</MenubarShortcut>
-              </MenubarItem>
-              <MenubarItem>New Window</MenubarItem>
-              <MenubarSeparator />
-              <MenubarItem>Share</MenubarItem>
-              <MenubarSeparator />
-              <MenubarItem>Print</MenubarItem>
-            </MenubarContent>
-          </MenubarMenu>
-        </Menubar> */}
+       
+        <Drawer/>
 
       </div>
     </>

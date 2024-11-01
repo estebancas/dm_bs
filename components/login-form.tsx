@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -23,7 +22,7 @@ const formSchema = z.object({
   name: z.string().min(2, {
     message: "Nombre debe tener al menos 2 caracteres",
   }),
-  email: z.string().email({ message: "El email debe ser valido" }).optional(),
+  email: z.string().email({ message: "El email es requerido y debe ser valido" }),
 });
 
 export default function LoginForm({onLogin}: Props) {
@@ -46,7 +45,7 @@ export default function LoginForm({onLogin}: Props) {
       <Form {...form}>
         <h2 className="text-xl font-bold mb-4">Hola!</h2>
         <p className="text-base mb-8">Bienvenidos al Baby Shower de dylan mateo</p>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
           <FormField
             control={form.control}
             name="name"
@@ -69,10 +68,6 @@ export default function LoginForm({onLogin}: Props) {
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
-                <FormDescription>
-                  El correo es opcional, para enviar fotos del evento a este
-                  destino.
-                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
