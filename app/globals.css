@@ -69,4 +69,13 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+
+  .ql-container {
+    height: 200px;
+  }
+
+  .ql-editor {
+    margin-bottom: 20px;
+  }
+
 }

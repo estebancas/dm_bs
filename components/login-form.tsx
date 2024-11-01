@@ -8,40 +8,44 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {User} from '@/store/user/index'
+
+type Props = {onLogin: (user: User) => void}
 
 const formSchema = z.object({
   name: z.string().min(2, {
     message: "Nombre debe tener al menos 2 caracteres",
   }),
-  email: z.string().email({ message: "El email debe ser valido" }).optional(),
+  email: z.string().email({ message: "El email es requerido y debe ser valido" }),
 });
 
-export default function LoginForm() {
+export default function LoginForm({onLogin}: Props) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      email: undefined,
+      email: "",
     },
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    console.log(values)
+    onLogin(values);
+    
   }
 
   return (
     <div className="flex flex-col justify-center items-center">
       <Form {...form}>
-        <h2>Hola!</h2>
-        <p>Bienvenidos al Baby Shower de dylan mateo</p>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <h2 className="text-xl font-bold mb-4">Hola!</h2>
+        <p className="text-base mb-8">Bienvenidos al Baby Shower de dylan mateo</p>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
           <FormField
             control={form.control}
             name="name"
@@ -64,15 +68,11 @@ export default function LoginForm() {
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
-                <FormDescription>
-                  El correo es opcional, para enviar fotos del evento a este
-                  destino.
-                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <Button type="submit">Ingresar</Button>
+          <Button className="w-full" type="submit">Ingresar</Button>
         </form>
       </Form>
     </div>
