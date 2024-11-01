@@ -1,0 +1,97 @@
+[
+  {
+    "label": "Que tono de piel cree que vaya a tener Dylan?",
+    "type": "select",
+    "options": [
+      {
+        "text": "Blanco"
+      },
+      {
+        "text": "Negrillo"
+      },
+      {
+        "text": "Moreno"
+      }
+    ]
+  },
+  {
+    "label": "De quien cree que va a heredar el temperamento?",
+    "type": "select",
+    "options": [
+      {
+        "text": "Papá"
+      },
+      {
+        "text": "Mamá"
+      }
+    ]
+  },
+  {
+    "label": "Cual de los dos nombres crees que vas a usar mas?",
+    "type": "select",
+    "options": [
+      {
+        "text": "Dylan"
+      },
+      {
+        "text": "Mateo"
+      }
+    ]
+  },
+  {
+    "label": "Que deporte cree usted que practicará de niño?",
+    "type": "select",
+    "options": [
+      {
+        "text": "Futbol"
+      },
+      {
+        "text": "Basket"
+      },
+      {
+        "text": "Longboard - patineta"
+      },
+      {
+        "text": "Natacion"
+      }
+    ]
+  },
+  {
+    "label": "Cuanto crees que vaya a pesar Dylan?",
+    "type": "input",
+    "format": "number"
+  },
+  {
+    "label": "Quien cree que vaya a ser el tio favorito despues de Esteban (Banano)?",
+    "type": "select",
+    "options": [
+      {
+        "text": "Victor"
+      },
+      {
+        "text": "Geiner (Liko)"
+      },
+      {
+        "text": "Mauren"
+      },
+      {
+        "text": "Silvia"
+      },
+      {
+        "text": "Hermano de merly 1"
+      },
+      {
+        "text": "Hermano de merly 2"
+      },
+      {
+        "text": "Dayana"
+      },
+      {
+        "text": "Hermano de merly 3"
+      },
+      {
+        "text": "Jonatan"
+      }
+    ]
+  }
+]
