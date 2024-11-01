@@ -25,12 +25,14 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "flex min-h-screen flex-col font-sans antialiased",
+          "flex min-h-screen flex-col font-sans antialiased items-center" ,
           inter.variable,
           playfair.variable
         )}
       >
+        <div className="flex flex-col w-full max-w-[480px] py-24 px-6">
         <Providers>{children}</Providers>
+        </div>
       </body>
     </html>
   );

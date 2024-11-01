@@ -1,5 +1,7 @@
+
+
 import { useSelector } from 'react-redux';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { RootState } from '@/types/store';
 
@@ -8,7 +10,7 @@ export const useAuth = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (!isAuthenticated && router) {
       router.push('/login');
     }
   }, [isAuthenticated, router]);

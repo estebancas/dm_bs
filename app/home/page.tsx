@@ -1,3 +1,5 @@
+'use client'
+
 import Agenda from "@/components/agenda";
 import CommentForm from "@/components/comment-form";
 import { useAppSelector } from "@/hooks/store";
