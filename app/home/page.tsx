@@ -1,16 +1,13 @@
-import Agenda from "@/components/agenda";
-import CommentForm from "@/components/comment-form";
-import { useAppSelector } from "@/hooks/store";
-import { useAuth } from "@/hooks/useAuth";
 import React from "react";
 
-export default function Home() {
-  useAuth();
-  const user = useAppSelector((state) => state.user.userData);
+import Agenda from "@/components/agenda";
+import CommentForm from "@/components/comment-form";
 
+export default function Home() {
   return (
     <div className="flex flex-col justify-center">
-      {user && !user.comment ? <CommentForm /> : <Agenda />}
+      <CommentForm />
+      <Agenda />
     </div>
   );
 }

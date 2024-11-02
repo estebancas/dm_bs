@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "flex min-h-screen flex-col font-sans antialiased",
+          "font-sans antialiased",
           inter.variable,
           playfair.variable
         )}

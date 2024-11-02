@@ -2,6 +2,8 @@
   {
     "label": "Que tono de piel cree que vaya a tener Dylan?",
     "type": "select",
+    "id": 1,
+    "graphicType": "",
     "options": [
       {
         "text": "Blanco"
@@ -17,6 +19,8 @@
   {
     "label": "De quien cree que va a heredar el temperamento?",
     "type": "select",
+    "id": 2,
+    "graphicType": "",
     "options": [
       {
         "text": "Papá"
@@ -29,6 +33,8 @@
   {
     "label": "Cual de los dos nombres crees que vas a usar mas?",
     "type": "select",
+    "id": 3,
+    "graphicType": "",
     "options": [
       {
         "text": "Dylan"
@@ -41,6 +47,8 @@
   {
     "label": "Que deporte cree usted que practicará de niño?",
     "type": "select",
+    "id": 4,
+    "graphicType": "",
     "options": [
       {
         "text": "Futbol"
@@ -57,6 +65,8 @@
     ]
   },
   {
+    "id": 5,
+    "graphicType": "",
     "label": "Cuanto crees que vaya a pesar Dylan?",
     "type": "input",
     "format": "number"
@@ -64,34 +74,124 @@
   {
     "label": "Quien cree que vaya a ser el tio favorito despues de Esteban (Banano)?",
     "type": "select",
+    "id": 6,
+    "graphicType": "",
     "options": [
       {
-        "text": "Victor"
+        "text": "Victor - hermano de jose"
       },
       {
         "text": "Geiner (Liko)"
       },
       {
-        "text": "Mauren"
+        "text": "Mauren - hermana de merly"
       },
       {
-        "text": "Silvia"
+        "text": "Silvia - hermana de merly"
       },
       {
-        "text": "Hermano de merly 1"
+        "text": "Rafa - hermano de merly"
       },
       {
-        "text": "Hermano de merly 2"
+        "text": "Fran - hermano de merly"
       },
       {
-        "text": "Dayana"
+        "text": "Dayana - hermana de jose"
       },
       {
-        "text": "Hermano de merly 3"
+        "text": "Gabriel - Hermano de merly"
       },
       {
-        "text": "Jonatan"
+        "text": "Jonatan - hermano de jose"
+      },
+      {
+        "text": "Madmi"
       }
     ]
+  },
+
+  {
+    "label": "A quien crees que se parecerá mas Dylan?",
+    "type": "select",
+    "id": 7,
+    "graphicType": "",
+    "options": [
+      {
+        "text": "Jose"
+      },
+      {
+        "text": "Merly"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "graphicType": "",
+    "label": "Que apodo le pondran sus amigos?",
+    "type": "input",
+    "format": "string"
+  },
+  {
+    "id": 9,
+    "graphicType": "",
+    "label": "Que profesión escogerá cuando sea mayor?",
+    "type": "input",
+    "format": "string"
+  },
+  {
+    "id": 10,
+    "graphicType": "",
+    "label": "Cual cree que será la primer palabra de Dylan diga?",
+    "type": "input",
+    "format": "string"
+  },
+  {
+    "id": 11,
+    "graphicType": "",
+    "label": "Que animal cree que será el favorito de Dylan?",
+    "type": "input",
+    "format": "string"
+  },
+  {
+    "label": "Creen que le va a gustar mas Guanacaste o San José?",
+    "type": "select",
+    "id": 12,
+    "graphicType": "",
+    "options": [
+      {
+        "text": "Team Guana"
+      },
+      {
+        "text": "Team Chepe"
+      }
+    ]
+  },
+  {
+    "label": "Cual papa creen que va a ser mas alcahueta?",
+    "type": "select",
+    "id": 13,
+    "graphicType": "",
+    "options": [
+      {
+        "text": "La Jose"
+      },
+      {
+        "text": "Merly"
+      }
+    ]
+  },
+  {
+    "label": "Cuantos meses cree que tardará en dar su primer paso?",
+    "id": 14,
+    "graphicType": "",
+    "type": "input",
+    "format": "number"
+  },
+  {
+    "label": "Que edad tendra cuando haga su primera travesura?",
+    "id": 15,
+    "graphicType": "",
+    "type": "input",
+    "format": "string"
   }
 ]

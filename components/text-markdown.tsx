@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+import ReactQuill from "react-quill-new";
+import "react-quill-new/dist/quill.snow.css";
 
 type Props = {
   onChange: (html: string) => void;
@@ -21,8 +21,7 @@ const formats = [
   "underline",
   "strike",
   "blockquote",
-  "list",
-  "bullet",
+  "list"
 ];
 
 export default function TextMarkdown({ onChange }: Props) {
@@ -39,6 +38,7 @@ export default function TextMarkdown({ onChange }: Props) {
       onChange={setValue}
       modules={modules}
       formats={formats}
+      style={{ height: 200, marginBottom: '5rem', marginTop: '2rem' }}
     />
   );
 }
