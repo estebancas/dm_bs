@@ -36,7 +36,7 @@ class HttpService {
 
     this.instance.interceptors.response.use(
       (response: AxiosResponse) => {
-        return response.data;
+        return response;
       },
       (error) => {
         if (error.response) {
@@ -62,7 +62,7 @@ class HttpService {
     config?: AxiosRequestConfig
   ): Promise<T> {
     const response = await this.instance.post<T>(url, data, config);
-    return response.data;
+    return response.data
   }
 
   public async put<T, L>(
