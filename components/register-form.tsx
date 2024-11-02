@@ -2,6 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
@@ -14,12 +15,11 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
-import { login as loginApi } from "@/lib/api/user";
-import { login } from "@/store/user";
+import { register as registerApi } from "@/lib/api/user";
+import { register } from "@/store/user";
 
-const formSchema = z.object({
+const registerSchema = z.object({
   name: z.string().min(2, {
     message: "Nombre debe tener al menos 2 caracteres",
   }),
@@ -28,26 +28,29 @@ const formSchema = z.object({
     .email({ message: "El email es requerido y debe ser valido" }),
 });
 
-export default function LoginForm() {
-  const dispatch = useDispatch();
+export default function RegisterForm() {
   const router = useRouter();
-
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const dispatch = useDispatch();
+  const form = useForm<z.infer<typeof registerSchema>>({
+    resolver: zodResolver(registerSchema),
     defaultValues: {
       name: "",
       email: "",
     },
   });
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    const result = await loginApi(values);
+  async function onSubmit(values: z.infer<typeof registerSchema>) {
+    const response = await registerApi(values);
 
-    if (result) {
-      router.replace("/home");
-      dispatch(login(result));
+    if (response) {
+        router.push('/home');
+        dispatch(register(response))
     }
   }
+
+  const handleBack = () => {
+    router.back();
+  };
 
   return (
     <div className="flex flex-col justify-center items-center">
@@ -83,16 +86,16 @@ export default function LoginForm() {
             )}
           />
           <Button className="w-full" type="submit">
-            Listo
+            Listo, vamos!
           </Button>
           <Button
             variant={"secondary"}
             className="w-full"
-            onClick={() => router.push("/register")}
+            onClick={() => router.push("/login")}
           >
-            Crearme una cuenta
+            Ya tengo una cuenta
           </Button>
-          <Button variant={"ghost"} className="" onClick={() => router.back()}>
+          <Button variant={"ghost"} className="" onClick={handleBack}>
             Atras
           </Button>
         </form>

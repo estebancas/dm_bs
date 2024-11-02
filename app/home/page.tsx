@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import Agenda from "@/components/agenda";
 import CommentForm from "@/components/comment-form";

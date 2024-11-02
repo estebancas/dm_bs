@@ -1,35 +1,41 @@
 import React from "react";
-import { Button } from "./ui/button";
+
+import { useRouter } from "next/navigation";
 import Image from "next/image";
-import laJose from "../public/images/laJose.png"
 
-type Props = {
-  onContinue: () => void;
-};
+import { Button } from "./ui/button";
+import Icon from "../public/images/dylan-mateo-baby-shower-icon.png";
 
-const laJoseImage = laJose
+export default function Welcome() {
+  const router = useRouter();
 
-export default function Welcome({ onContinue }: Props) {
+  const onContinue = () => {
+    router.push("/login");
+  };
+
+  const onRegister = () => {
+    router.push("/register");
+  };
+
   return (
-    <>
-    <div>
-    <Image
-        src={laJoseImage}
-        alt="Jose y Merly en el Cine"
-        height={350}
-        width={400}
-      />
-    </div>
-    <section className="py-4">
-      
-      <div className="container max-w-3xl justify-center items-center flex flex-col">
-        <h2 className="text-lg mb-7 font-bold">Hola!</h2>
+    <div className="max-w-3xl justify-start items-center flex flex-col relative flex-1">
+      <div className="text-center flex flex-col items-center">
+        <Image src={Icon} alt="icon" width={300} height={300} />
+        <h2 className="text-2xl mb-7 font-bold">Hola!</h2>
         <p>Bienvenidos al Baby Shower de Dylan Mateo</p>
-        <Button onClick={onContinue} className="mt-20 w-full">
-          Continuar
+      </div>
+      <div className="absolute bottom-0 w-full flex flex-row">
+        <Button
+          variant="secondary"
+          className="mr-4 flex-1"
+          onClick={onContinue}
+        >
+          Ya tengo una cuenta
+        </Button>
+        <Button className="flex-1" onClick={onRegister}>
+          Ingresar
         </Button>
       </div>
-    </section>
-    </>
+    </div>
   );
 }

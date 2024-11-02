@@ -6,6 +6,7 @@ export interface User {
   email?: string;
   comment?: string;
   token?: string;
+  survey?: Record<string, number>
 }
 
 export interface UserState {
@@ -26,6 +27,10 @@ const userSlice = createSlice({
       state.userData = action.payload;
       state.isAuthenticated = true;
     },
+    register: (state, action: PayloadAction<User>) => {
+      state.userData = action.payload;
+      state.isAuthenticated = true;
+    },
     logout: (state) => {
       state.userData = null;
       state.isAuthenticated = false;
@@ -35,9 +40,15 @@ const userSlice = createSlice({
         ...state.userData,
         comment: action.payload,
       }
-    }
+    },
+    setUserSurvey: (state, action: PayloadAction<Record<string, number>>) => {
+      state.userData = {
+        ...state.userData,
+        survey: action.payload,
+      }
+    },
   },
 });
 
-export const { login, logout, setUserComment } = userSlice.actions;
+export const { login, logout, setUserComment, register, setUserSurvey } = userSlice.actions;
 export default userSlice.reducer;
