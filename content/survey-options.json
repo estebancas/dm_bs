@@ -2,6 +2,8 @@
   {
     "label": "Que tono de piel cree que vaya a tener Dylan?",
     "type": "select",
+    "id": 1,
+    "graphicType": "",
     "options": [
       {
         "text": "Blanco"
@@ -17,6 +19,8 @@
   {
     "label": "De quien cree que va a heredar el temperamento?",
     "type": "select",
+    "id": 2,
+    "graphicType": "",
     "options": [
       {
         "text": "Papá"
@@ -29,6 +33,8 @@
   {
     "label": "Cual de los dos nombres crees que vas a usar mas?",
     "type": "select",
+    "id": 3,
+    "graphicType": "",
     "options": [
       {
         "text": "Dylan"
@@ -41,6 +47,8 @@
   {
     "label": "Que deporte cree usted que practicará de niño?",
     "type": "select",
+    "id": 4,
+    "graphicType": "",
     "options": [
       {
         "text": "Futbol"
@@ -57,6 +65,8 @@
     ]
   },
   {
+    "id": 5,
+    "graphicType": "",
     "label": "Cuanto crees que vaya a pesar Dylan?",
     "type": "input",
     "format": "number"
@@ -64,6 +74,8 @@
   {
     "label": "Quien cree que vaya a ser el tio favorito despues de Esteban (Banano)?",
     "type": "select",
+    "id": 6,
+    "graphicType": "",
     "options": [
       {
         "text": "Victor"
@@ -91,7 +103,69 @@
       },
       {
         "text": "Jonatan"
+      },
+      {
+        "text": "Madmi"
+      }
+    ]
+  },
+
+  {
+    "label": "A quien se parecerá Dylan?",
+    "type": "select",
+    "id": 7,
+    "graphicType": "",
+    "options": [
+      {
+        "text": "Jose"
+      },
+      {
+        "text": "Merly"
+      }
+      
+    ]
+  },
+  {
+    "id": 8,
+    "graphicType": "",
+    "label": "Que apodo le pondran sus amigos?",
+    "type": "input",
+    "format": "string"
+  },
+  {
+    "id": 9,
+    "graphicType": "",
+    "label": "Que profesión escogereá cuando sea mayor?",
+    "type": "input",
+    "format": "string"
+  },
+  {
+    "id": 10,
+    "graphicType": "",
+    "label": "Cual será la primer palabra de Dylan diga?",
+    "type": "input",
+    "format": "string"
+  }, 
+  {
+    "id": 11,
+    "graphicType": "",
+    "label": "Que animal será el favorito de Dylan?",
+    "type": "input",
+    "format": "string"
+  },
+  {
+    "label": "Creen que le va a gustar mas Guanacaste o San José",
+    "type": "select",
+    "id": 12,
+    "graphicType": "",
+    "options": [
+      {
+        "text": "Team Guana"
+      },
+      {
+        "text": "Team Chepe"
       }
     ]
   }
+  
 ]
