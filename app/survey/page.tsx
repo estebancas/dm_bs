@@ -1,5 +1,8 @@
+import { SurveyForm } from "@/components/survey-form";
 import React from "react";
 
 export default function Survey() {
-    return <div></div>
+    return <div>
+        <SurveyForm/>
+    </div>
 }
