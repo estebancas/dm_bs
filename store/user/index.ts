@@ -1,3 +1,4 @@
+import { QuestionForm } from "@/types/survey";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface User {
@@ -6,7 +7,7 @@ export interface User {
   email?: string;
   comment?: string;
   token?: string;
-  survey?: Record<string, number>
+  survey?: QuestionForm;
 }
 
 export interface UserState {
@@ -41,7 +42,7 @@ const userSlice = createSlice({
         comment: action.payload,
       }
     },
-    setUserSurvey: (state, action: PayloadAction<Record<string, number>>) => {
+    setUserSurvey: (state, action: PayloadAction<QuestionForm>) => {
       state.userData = {
         ...state.userData,
         survey: action.payload,

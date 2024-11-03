@@ -1,3 +1,12 @@
+export interface Survey {
+  id: number;
+  label: string;
+  options?: { text: string }[];
+  format: "number" | "string";
+  type: "select" | "input";
+  graphicType?: string;
+}
+
 interface QuestionBase {
   label: string;
   type: "select" | "input";
@@ -18,5 +27,5 @@ interface InputQuestion extends QuestionBase {
 export type Question = SelectQuestion | InputQuestion;
 
 export type QuestionForm = {
-    [key: string]: Question
-}
+  [key: number]: Question;
+};
