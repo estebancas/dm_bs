@@ -38,7 +38,7 @@ export default function Agenda() {
       <p className="text-base text-center mb-4">
         Estos son los eventos que tenemos preparados para ti hoy
       </p>
-      <Card>
+      <Card className="w-full">
         <CardHeader>
           <h2>Agenda para hoy</h2>
         </CardHeader>

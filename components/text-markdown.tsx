@@ -4,6 +4,8 @@ import "react-quill-new/dist/quill.snow.css";
 
 type Props = {
   onChange: (html: string) => void;
+  noMarginTop?: boolean;
+  defaultValue?: string;
 };
 
 const modules = {
@@ -21,11 +23,17 @@ const formats = [
   "underline",
   "strike",
   "blockquote",
-  "list"
+  "list",
 ];
 
-export default function TextMarkdown({ onChange }: Props) {
+export default function TextMarkdown({ onChange, noMarginTop = false, defaultValue }: Props) {
   const [value, setValue] = useState("");
+
+  useEffect(() => {
+    if (defaultValue) {
+      setValue(defaultValue);
+    }
+  }, [defaultValue]);
 
   useEffect(() => {
     onChange(value);
@@ -38,7 +46,11 @@ export default function TextMarkdown({ onChange }: Props) {
       onChange={setValue}
       modules={modules}
       formats={formats}
-      style={{ height: 200, marginBottom: '5rem', marginTop: '2rem' }}
+      style={{
+        height: 200,
+        marginBottom: "5rem",
+        marginTop: noMarginTop ? undefined : "2rem",
+      }}
     />
   );
 }

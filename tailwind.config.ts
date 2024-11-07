@@ -59,7 +59,8 @@ const config: Config = {
   				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
   				border: 'hsl(var(--sidebar-border))',
   				ring: 'hsl(var(--sidebar-ring))'
-  			}
+  			},
+			glass: 'rgba(243, 243, 243, 0.5)',
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

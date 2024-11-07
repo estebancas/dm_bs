@@ -1,5 +1,8 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import { toast } from "sonner";
 import {
   Select,
   SelectContent,
@@ -8,14 +11,18 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import Image from "next/image";
-import { useEffect, useState } from "react";
 
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import Icon from "../public/images/dm-skate-icon.png";
+import Icon2 from "../public/images/dm-principito.png";
 import { Button } from "./ui/button";
-
+import { QuestionForm, Survey } from "@/types/survey";
+import { updateSurvey } from "@/lib/api/user";
+import { useDispatch } from "react-redux";
+import { setUserSurvey } from "@/store/user";
+import { useAppSelector } from "@/hooks/store";
+import { useAuth } from "@/hooks/useAuth";
 import {
   Dialog,
   DialogContent,
@@ -26,12 +33,6 @@ import {
   DialogFooter,
   DialogClose,
 } from "@/components/ui/dialog";
-import { QuestionForm, Survey } from "@/types/survey";
-import { updateSurvey } from "@/lib/api/user";
-import { useDispatch } from "react-redux";
-import { setUserSurvey } from "@/store/user";
-import { useAppSelector } from "@/hooks/store";
-import { useAuth } from "@/hooks/useAuth";
 
 type Props = {
   data: Survey[];
@@ -59,8 +60,11 @@ export function SurveyForm({ data }: Props) {
     if (responses) {
       const response = await updateSurvey(responses);
 
-      if (response) {
+      if (response.data) {
+        toast.success("Encuesta enviada");
         dispatch(setUserSurvey(responses));
+      } else {
+        toast.error(response.error);
       }
     }
   };
@@ -73,7 +77,25 @@ export function SurveyForm({ data }: Props) {
   };
 
   if (survey) {
-    return <div>Encuesta enviada, espera a los demas participantes</div>;
+    return (
+      <div className="flex flex-col items-center">
+        <Image
+          className="mb-8"
+          src={Icon2}
+          alt="icon"
+          width={150}
+          height={150}
+        />
+        <h2 className="font-bold item text-xl text-center mb-4">
+          Tu encuesta ya fue enviada
+        </h2>
+        <p className="text-sm mb-4 text-center">
+          Esperaremos a que los demás participantes envíen sus respuestas y
+          mostraremos el resultados de todos los participantes en esta misma
+          sección.
+        </p>
+      </div>
+    );
   }
 
   return (
@@ -112,8 +134,7 @@ export function SurveyForm({ data }: Props) {
                     </SelectTrigger>
                     <SelectContent>
                       <SelectGroup>
-                        {formItem.options &&
-                        formItem.options.length
+                        {formItem.options && formItem.options.length
                           ? formItem.options.map((option, i) => (
                               <SelectItem
                                 key={`option-${i}`}

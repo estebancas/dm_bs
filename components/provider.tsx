@@ -1,41 +1,21 @@
 "use client";
 
+import { PropsWithChildren } from "react";
+
 import { Provider } from "react-redux";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/app-sidebar";
+
 import store from "@/store/store";
-import { useAppSelector } from "@/hooks/store";
-import { useEffect, useState } from "react";
+import { Toaster } from "./ui/sonner";
 
-function SidebarCmProvider({ children }: React.PropsWithChildren) {
-  const [isMounted, setIsMounted] = useState(false);
-  const isAuthenticated = useAppSelector((state) => state.user.isAuthenticated);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  return (
-    <SidebarProvider>
-      {isMounted ? (
-        <>
-          <AppSidebar />
-          <main className="flex flex-col w-full max-w-[480px] py-20 px-6 h-full min-h-screen">
-            {isAuthenticated ? (
-              <SidebarTrigger className="absolute top-[40px] z-[2]" />
-            ) : null}
-            {children}
-          </main>
-        </>
-      ) : null}
-    </SidebarProvider>
-  );
+function ToasterProvider() {
+  return <Toaster position="top-right" />;
 }
 
-export default function Providers({ children }: React.PropsWithChildren) {
+export default function Providers({ children }: PropsWithChildren) {
   return (
     <Provider store={store}>
-      <SidebarCmProvider>{children}</SidebarCmProvider>
+      {children}
+      <ToasterProvider />
     </Provider>
   );
 }

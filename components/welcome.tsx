@@ -20,13 +20,13 @@ export default function Welcome() {
   };
 
   return (
-    <div className="max-w-3xl justify-start items-center flex flex-col relative flex-1">
+    <div className="max-w-3xl justify-between items-center flex flex-col flex-1 pt-24 px-4 pb-16 min-h-screen">
       <div className="text-center flex flex-col items-center">
         <Image src={Icon} alt="icon" width={300} height={300} />
         <h2 className="text-2xl mb-7 font-bold">Hola!</h2>
         <p>Bienvenidos al Baby Shower de Dylan Mateo</p>
       </div>
-      <div className="absolute bottom-0 w-full flex flex-row">
+      <div className="bottom-10 w-full flex flex-row">
         <Button
           variant="secondary"
           className="mr-4 flex-1"

@@ -18,6 +18,7 @@ import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import { register as registerApi } from "@/lib/api/user";
 import { register } from "@/store/user";
+import { useState } from "react";
 
 const registerSchema = z.object({
   name: z.string().min(2, {
@@ -28,9 +29,14 @@ const registerSchema = z.object({
     .email({ message: "El email es requerido y debe ser valido" }),
 });
 
-export default function RegisterForm() {
+type Props = {
+  onError: (message?: string) => void;
+};
+
+export default function RegisterForm({ onError }: Props) {
   const router = useRouter();
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
   const form = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -40,12 +46,18 @@ export default function RegisterForm() {
   });
 
   async function onSubmit(values: z.infer<typeof registerSchema>) {
+    setLoading(true);
     const response = await registerApi(values);
 
-    if (response) {
-        router.push('/home');
-        dispatch(register(response))
+    if (response.data) {
+      onError(undefined);
+      router.push("/app/home");
+      dispatch(register(response.data));
+    } else {
+      onError(response.error || "Ocurrio un error inesperado");
     }
+
+    setLoading(false);
   }
 
   const handleBack = () => {
@@ -85,17 +97,23 @@ export default function RegisterForm() {
               </FormItem>
             )}
           />
-          <Button className="w-full" type="submit">
+          <Button disabled={loading} className="w-full" type="submit">
             Listo, vamos!
           </Button>
           <Button
+            disabled={loading}
             variant={"secondary"}
             className="w-full"
             onClick={() => router.push("/login")}
           >
             Ya tengo una cuenta
           </Button>
-          <Button variant={"ghost"} className="" onClick={handleBack}>
+          <Button
+            disabled={loading}
+            variant={"ghost"}
+            className=""
+            onClick={handleBack}
+          >
             Atras
           </Button>
         </form>

@@ -18,6 +18,7 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { login as loginApi } from "@/lib/api/user";
 import { login } from "@/store/user";
+import { useState } from "react";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -28,9 +29,14 @@ const formSchema = z.object({
     .email({ message: "El email es requerido y debe ser valido" }),
 });
 
-export default function LoginForm() {
+type Props = {
+  onError: (message?: string) => void;
+};
+
+export default function LoginForm({ onError }: Props) {
   const dispatch = useDispatch();
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -41,12 +47,19 @@ export default function LoginForm() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    setLoading(true);
     const result = await loginApi(values);
 
-    if (result) {
-      router.replace("/home");
-      dispatch(login(result));
+    if (result && result.data) {
+      router.replace("/app/home");
+      onError(undefined);
+      dispatch(login(result.data));
+    } else {
+      console.log("error here");
+      onError(result.error || "Ocurrio un error inesperado");
     }
+
+    setLoading(false);
   }
 
   return (
@@ -82,17 +95,23 @@ export default function LoginForm() {
               </FormItem>
             )}
           />
-          <Button className="w-full" type="submit">
+          <Button disabled={loading} className="w-full" type="submit">
             Listo
           </Button>
           <Button
+            disabled={loading}
             variant={"secondary"}
             className="w-full"
             onClick={() => router.push("/register")}
           >
             Crearme una cuenta
           </Button>
-          <Button variant={"ghost"} className="" onClick={() => router.back()}>
+          <Button
+            disabled={loading}
+            variant={"ghost"}
+            className=""
+            onClick={() => router.back()}
+          >
             Atras
           </Button>
         </form>
